@@ -47,6 +47,7 @@ func (s *Sentence) Prose(w string) *Sentence {
 }
 
 func (s *Sentence) Print() {
+	s.builder.WriteString("\n")
 	if _, err := s.target.Write([]byte(s.builder.String())); err != nil {
 		panic(err)
 	}
