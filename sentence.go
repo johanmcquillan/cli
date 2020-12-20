@@ -43,6 +43,13 @@ func (s *Sentence) Highlight(format string, args ...interface{}) *Sentence {
 	return s.Plain(s.Highlighter.Format(format, args...))
 }
 
+func (s *Sentence) Quote(format string, args ...interface{}) *Sentence {
+	return s.
+		Plain(`"`).
+		Highlight(strings.ReplaceAll(fmt.Sprintf(format, args...), `"`, `\"`)).
+		Plain(`"`)
+}
+
 func (s *Sentence) Prose(format string, args ...interface{}) *Sentence {
 	return s.Plain(s.Proser.Format(format, args...))
 }

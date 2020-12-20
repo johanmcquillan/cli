@@ -58,7 +58,9 @@ func (c *CLI) WithLevel(level Level) *Sentence {
 	if !ok {
 		formatter = PlainFormatter{}
 	}
-	return NewSentence().Plain(formatter.Format(level.String())).Plain(": ")
+	return NewSentence().
+		Plain(formatter.Format(level.String())).
+		Plain(": ")
 }
 
 func (c *CLI) SetLevel(level Level) {
