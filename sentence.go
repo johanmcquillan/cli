@@ -45,9 +45,9 @@ func (s *Sentence) Highlight(format string, args ...interface{}) *Sentence {
 
 func (s *Sentence) Quote(format string, args ...interface{}) *Sentence {
 	return s.
-		Plain(`"`).
+		Prose(`"`).
 		Highlight(strings.ReplaceAll(fmt.Sprintf(format, args...), `"`, `\"`)).
-		Plain(`"`)
+		Prose(`"`)
 }
 
 func (s *Sentence) Prose(format string, args ...interface{}) *Sentence {
