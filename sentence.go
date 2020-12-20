@@ -1,19 +1,20 @@
 package cli
 
 import (
+	"fmt"
 	"io"
 	"os"
 	"strings"
 )
 
 type Formatter interface {
-	Format(string) string
+	Format(string, ...interface{}) string
 }
 
 type PlainFormatter struct{}
 
-func (PlainFormatter) Format(s string) string {
-	return s
+func (PlainFormatter) Format(format string, args ...interface{}) string {
+	return fmt.Sprintf(format, args...)
 }
 
 type Sentence struct {
@@ -33,17 +34,17 @@ func NewSentence() *Sentence {
 	}
 }
 
-func (s *Sentence) Plain(w string) *Sentence {
-	_, _ = s.builder.WriteString(w)
+func (s *Sentence) Plain(format string, args ...interface{}) *Sentence {
+	_, _ = s.builder.WriteString(fmt.Sprintf(format, args...))
 	return s
 }
 
-func (s *Sentence) Highlight(w string) *Sentence {
-	return s.Plain(s.Highlighter.Format(w))
+func (s *Sentence) Highlight(format string, args ...interface{}) *Sentence {
+	return s.Plain(s.Highlighter.Format(format, args...))
 }
 
-func (s *Sentence) Prose(w string) *Sentence {
-	return s.Plain(s.Proser.Format(w))
+func (s *Sentence) Prose(format string, args ...interface{}) *Sentence {
+	return s.Plain(s.Proser.Format(format, args...))
 }
 
 func (s *Sentence) Print() {

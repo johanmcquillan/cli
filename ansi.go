@@ -1,6 +1,8 @@
 package cli
 
 import (
+	"fmt"
+
 	"github.com/mgutz/ansi"
 )
 
@@ -10,6 +12,6 @@ func NewANSI(ansiString string) ANSI {
 	return ANSI(ansi.ColorFunc(ansiString))
 }
 
-func (a ANSI) Format(s string) string {
-	return a(s)
+func (a ANSI) Format(format string, args ...interface{}) string {
+	return a(fmt.Sprintf(format, args...))
 }
