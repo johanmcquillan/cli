@@ -61,6 +61,10 @@ func (c *CLI) WithLevel(level Level) *Sentence {
 	return NewSentence().Plain(formatter.Format(level.String()))
 }
 
+func (c *CLI) SetLevel(level Level) {
+	c.Level = level
+}
+
 func (c *CLI) Info() *Sentence {
 	return c.WithLevel(LevelInfo)
 }
@@ -71,6 +75,10 @@ func (c *CLI) Warning() *Sentence {
 
 func (c *CLI) Error() *Sentence {
 	return c.WithLevel(LevelError)
+}
+
+func SetLevel(level Level) {
+	logger.SetLevel(level)
 }
 
 func Info() *Sentence {
