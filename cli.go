@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"fmt"
 	"io/ioutil"
 )
 
@@ -84,6 +85,9 @@ func GetLevel() Level {
 }
 
 func SetLevel(level Level) {
+	if level > LevelInfo {
+		panic(fmt.Errorf("max level is %d [%s], received level %s", LevelInfo, LevelInfo, level))
+	}
 	logger.SetLevel(level)
 }
 
