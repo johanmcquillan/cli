@@ -79,6 +79,10 @@ func (c *CLI) Error() *Sentence {
 	return c.WithLevel(LevelError)
 }
 
+func GetLevel() Level {
+	return logger.Level
+}
+
 func SetLevel(level Level) {
 	logger.SetLevel(level)
 }
