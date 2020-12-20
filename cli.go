@@ -72,3 +72,15 @@ func (c *CLI) Warning() *Sentence {
 func (c *CLI) Error() *Sentence {
 	return c.WithLevel(LevelError)
 }
+
+func Info() *Sentence {
+	return logger.Info()
+}
+
+func Warning() *Sentence {
+	return logger.Warning()
+}
+
+func Error() *Sentence {
+	return logger.Error()
+}
