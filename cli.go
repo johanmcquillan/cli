@@ -42,7 +42,7 @@ func DefaultCLI() *CLI {
 		Level: LevelError,
 		levelToFormatter: map[Level]Formatter{
 			LevelError:   NewANSI("1+b"),
-			LevelWarning: NewANSI("11+b"),
+			LevelWarning: NewANSI("3+b"),
 			LevelInfo:    NewANSI("12+b"),
 		},
 	}
@@ -86,7 +86,7 @@ func GetLevel() Level {
 
 func SetLevel(level Level) {
 	if level > LevelInfo {
-		panic(fmt.Errorf("max level is %d [%s], received level %s", LevelInfo, LevelInfo, level))
+		panic(fmt.Errorf("max level is %d (%s), received level %d", LevelInfo, LevelInfo, level))
 	}
 	logger.SetLevel(level)
 }
