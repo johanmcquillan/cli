@@ -23,6 +23,6 @@ go_get(
     get = "github.com/mattn/go-isatty",
     revision = "v0.0.12",
     deps = [
-        "//deps/x:sys",
+        "//third_party/x:sys",
     ],
 )

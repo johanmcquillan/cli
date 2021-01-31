@@ -7,6 +7,6 @@ go_library(
     ],
     visibility = ["PUBLIC"],
     deps = [
-        "//deps:ansi",
+        "//third_party:ansi",
     ],
 )
