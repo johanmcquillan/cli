@@ -1,12 +1,12 @@
 go_library(
     name = "cli",
     srcs = [
+        "ansi.go",
         "cli.go",
         "sentence.go",
-        "ansi.go",
     ],
+    visibility = ["PUBLIC"],
     deps = [
         "//deps:ansi",
     ],
-    visibility = ["PUBLIC"],
 )
